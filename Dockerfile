@@ -15,7 +15,7 @@ WORKDIR /opt/uptime
 
 RUN rm config/default.yaml
 RUN mkdir -p /opt/uptime-config
-RUN cp /opt/uptime-config/* config/*
+RUN cp -rf /opt/uptime-config/* config/* 2>/dev/null
 
 RUN npm install
 RUN node app
