@@ -4,5 +4,6 @@ RUN apk update
 RUN apk add npm
 RUN apk add nodejs
 
-WORKDIR /uptime2/
+COPY uptime2 uptime
+WORKDIR /uptime/
 RUN npm install
