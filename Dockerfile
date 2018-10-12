@@ -1,5 +1,7 @@
 FROM alpine
 
+VOLUME /opt/uptime-config/
+
 RUN apk update
 
 RUN apk add build-base
@@ -19,3 +21,6 @@ RUN cp -rf /opt/uptime-config/* config/* 2>/dev/null
 
 RUN npm install
 RUN node app
+
+
+EXPOSE 8082
