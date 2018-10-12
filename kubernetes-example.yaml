@@ -64,8 +64,6 @@ spec:
         ports:
         - name: webui
           containerPort: 8082
-        command: ["node"]
-        args: ["app"]
         volumeMounts:
         - name: config
           mountPath: /uptime/config
