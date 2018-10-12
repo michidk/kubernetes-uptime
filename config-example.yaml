@@ -1,4 +1,5 @@
 url: 'http://my-domain.com/uptime:8082'
+port: 8082
 
 mongodb:
   connectionString: mongodb://mongodb:27017/uptime
