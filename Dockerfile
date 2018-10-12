@@ -1,7 +1,5 @@
 FROM alpine
 
-VOLUME /opt/uptime-config/
-
 RUN apk update
 
 RUN apk add build-base
@@ -16,6 +14,6 @@ RUN git clone --depth=1 git://github.com/AlexanderYW/uptime.git /opt/uptime
 WORKDIR /opt/uptime
 
 RUN npm install
-RUN node app
 
+VOLUME /opt/uptime-config/
 EXPOSE 8082

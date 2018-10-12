@@ -61,6 +61,8 @@ spec:
         env:
         - name: NODE_ENV # if you use this, name your config production.yaml
           value: production
+        command: ["node"]
+        args: ["app"]
         ports:
         - name: webui
           containerPort: 8082
