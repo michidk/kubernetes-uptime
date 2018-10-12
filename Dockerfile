@@ -6,7 +6,7 @@ RUN apk --no-cache add --virtual build-dependencies build-base git python make g
 RUN apk --no-cache add npm nodejs git
 
 RUN mkdir -p /opt/uptime/
-RUN git clone --depth=1 git://github.com/AlexanderYW/uptime.git /opt/uptime
+RUN git clone --depth=1 git://github.com/michidk/uptime.git /opt/uptime
 
 WORKDIR /opt/uptime
 
