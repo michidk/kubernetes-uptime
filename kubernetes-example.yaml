@@ -1,0 +1,75 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: uptime
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+  - hosts:
+    - my-domain.com
+  rules:
+  - host: my-domain.com
+    http:
+      paths:
+      - path: /uptime
+        backend:
+          serviceName: uptime
+          servicePort: webui
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: uptime
+  labels:
+    app: uptime
+spec:
+  selector:
+    app: uptime
+  type: ClusterIP
+  ports:
+  - name: webui
+    port: 8082
+    protocol: TCP
+    targetPort: 8082
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uptime
+  labels:
+    app: uptime
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: uptime
+  template:
+    metadata:
+      labels:
+        app: uptime
+    spec:
+      containers:
+      - name: mongo-db    
+        image: mongo:3.2
+        ports:
+        - name: db
+          containerPort: 27017
+      - name: uptime 
+        image: michidk/kubernetes-uptime:latest
+        imagePullPolicy: Always
+        env:
+        - name: NODE_ENV
+          value: production
+        ports:
+        - name: webui
+          containerPort: 8082
+        command: ["node"]
+        args: ["app"]
+        volumeMounts:
+        - name: config
+          mountPath: /uptime2/config
+      volumes:
+        - name: config
+          hostPath:
+            path: /data/uptime/

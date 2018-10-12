@@ -1,0 +1,3 @@
+[submodule "uptime2"]
+	path = uptime2
+	url = https://github.com/openduty/uptime2/
