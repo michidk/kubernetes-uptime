@@ -1,5 +1,5 @@
 # kubernetes-uptime
-![build badge](https://niccokunzmann.github.io/dockerhub-build-status-image/status.svg?organization=michidk&repository=kubernetes-uptime)
+[![build badge](https://niccokunzmann.github.io/dockerhub-build-status-image/status.svg?organization=michidk&repository=kubernetes-uptime)](https://hub.docker.com/r/michidk/kubernetes-uptime/builds/)
 
 A remote monitoring application using Node.js, MongoDB, and Twitter Bootstrap running on Kubernetes.
 
