@@ -59,7 +59,7 @@ spec:
         image: michidk/kubernetes-uptime:latest
         imagePullPolicy: Always
         env:
-        - name: NODE_ENV
+        - name: NODE_ENV # if you use this, name your config production.yaml
           value: production
         ports:
         - name: webui
@@ -68,7 +68,7 @@ spec:
         args: ["app"]
         volumeMounts:
         - name: config
-          mountPath: /uptime2/config
+          mountPath: /uptime/config
       volumes:
         - name: config
           hostPath:

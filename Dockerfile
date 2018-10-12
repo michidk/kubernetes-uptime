@@ -1,10 +1,7 @@
-FROM alpine
+FROM debian
 
-RUN apk update
-RUN apk add build-base
-RUN apk add python
-RUN apk add npm
-RUN apk add nodejs
+apt-get update
+apt-get install npm nodejs
 
 COPY uptime2 uptime
 WORKDIR /uptime/
