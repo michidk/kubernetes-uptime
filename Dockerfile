@@ -1,15 +1,20 @@
-FROM node:alpine
+FROM alpine
 
 RUN apk update
-RUN apk add --no-cache --virtual .gyp \
-        python \
-        make \
-        g++ 
 
-COPY uptime2 uptime
-WORKDIR /uptime/
+RUN apk add build-base
+RUN apk add python
+RUN apk add npm
+RUN apk add nodejs
+RUN apk add git
+
+RUN mkdir -p /opt/uptime
+RUN git clone --depth=1 https://github.com/openduty/uptime2/ /opt/uptime
+
+WORKDIR /opt/uptime
+
+RUN rm config/default.yaml
+RUN cp /opt/uptime-config/* config/*
 
 RUN npm install
-RUN apk del .gyp
-
-run node app
+RUN node app
