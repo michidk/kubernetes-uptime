@@ -15,4 +15,4 @@ RUN apk del build-dependencies
 
 VOLUME /opt/uptime-config/
 EXPOSE 8082
-ENTRYPOINT ["node app"]
+ENTRYPOINT ["node", "app"]
