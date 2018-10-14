@@ -55,6 +55,9 @@ spec:
         ports:
         - name: db
           containerPort: 27017
+        volumeMounts:
+        - name: database
+          mountPath: /data/db/
       - name: uptime 
         image: michidk/kubernetes-uptime:latest
         imagePullPolicy: Always
@@ -70,4 +73,7 @@ spec:
       volumes:
         - name: config
           hostPath:
-            path: /data/uptime/
+            path: /data/uptime/config
+        - name: database
+          hostPath:
+            path: /data/uptime/db
